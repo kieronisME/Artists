@@ -21,6 +21,8 @@
                         {{ __('view all artist!') }}
                     </x-nav-link>
 
+                
+
                 </div>
             </div>
 

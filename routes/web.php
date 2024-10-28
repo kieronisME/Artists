@@ -12,8 +12,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/Artists', [ArtistController::class, 'edit'])->name('Artists.index');
-    
+    // Route::get('/Artists', [ArtistController::class, 'edit'])->name('Artists.index');
+    Route::get('/artists', [ArtistController::class, 'index'])->name('Artists.index');
+
+
+    Route::get('/artists/{artist}', [ArtistController::class, 'show'])->name('artists.show');
+
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

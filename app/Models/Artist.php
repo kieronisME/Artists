@@ -11,3 +11,4 @@ class Artist extends Model
 {
     use HasFactory;
 }
+//// commit latter
