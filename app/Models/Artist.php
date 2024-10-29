@@ -10,5 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 class Artist extends Model
 {
     use HasFactory;
+    protected $fillable = [
+    'title',
+    'rating',
+    'releaseYear',
+    'image',
+    ];
 }
-//// commit latter

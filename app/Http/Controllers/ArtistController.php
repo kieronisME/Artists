@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artist;
+use Illuminate\Support\Facades\Storage;  
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        //
+      return view(  'artists.create');
     }
 
     /**
@@ -31,8 +32,30 @@ class ArtistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'rating' => 'required|max:5',
+            'releaseYear' => 'required|integer',
+            'image' => 'required|image|mimes:jpeg,png,gif|max:2048',
+        ]);
+    
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('ArtistImg/images'), $imageName);
+        } else {
+            $imageName = null;
+        }
+    
+        Artist::create([
+            'title' => $request->title,
+            'rating' => $request->rating,
+            'releaseYear' => $request->releaseYear,
+            'image' => $imageName,
+        ]);
+    
+        return to_route('Artists.index')->with('success', 'You just added another album!!!');
     }
+    
 
     /**
      * Display the specified resource.

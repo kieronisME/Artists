@@ -21,7 +21,9 @@
                         {{ __('view all artist!') }}
                     </x-nav-link>
 
-                
+                    <x-nav-link :href="route('Artists.create')" :active="request()->routeIs('Artists.create')">
+                        {{ __('Add album!!') }}
+                    </x-nav-link>
 
                 </div>
             </div>

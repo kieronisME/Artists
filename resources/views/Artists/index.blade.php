@@ -20,6 +20,10 @@
                             />
                         </a>
                         @endforeach
+
+                        <x-alert-success>
+                            {{session('success')}}
+                        </x-alert-success>
                 </div>
             </div>
         </div>
