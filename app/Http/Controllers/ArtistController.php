@@ -24,7 +24,7 @@ class ArtistController extends Controller
      */
     public function create()
     {
-      return view(  'artists.create');
+      return view(  'Artists.create');
     }
 
     /**
@@ -42,8 +42,6 @@ class ArtistController extends Controller
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('ArtistImg/images'), $imageName);
-        } else {
-            $imageName = null;
         }
     
         Artist::create([
@@ -62,7 +60,7 @@ class ArtistController extends Controller
      */
     public function show(Artist $artist)
     {
-        return view('artists.show')->with('artist', $artist);
+        return view('Artists.show')->with('artist', $artist);
     }
 
     /**
