@@ -12,7 +12,7 @@ class ArtistSeeder extends Seeder
      */
     public function run(): void
     {
-        // 
+        // adjust date to intagers 
         Artist::insert([
             ['title' => 'everyone hates chris!', 'rating' => 4, 'releaseYear' => 2020, 'image' => 'everyone hates chris!.png'],
             ['title' => 'FREEWAVE3', 'rating' => 5, 'releaseYear' => 2019, 'image' => 'FREEWAVE3.png'],
