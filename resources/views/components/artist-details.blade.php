@@ -3,7 +3,7 @@
 
     <!-- Artist Title --> 
 
-<!--     <h1 class="font-bold text-black-600 mb-2" style="font-size: 3rem;">{{ $title }}</h1>   -->
+    <h1 class="font-bold text-black-600 mb-2" style="font-size: 3rem;">{{ $title }}</h1>  
 
  
 
