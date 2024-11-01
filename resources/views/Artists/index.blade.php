@@ -17,6 +17,7 @@
                                 :rating="$artist->rating"
                                 :releaseYear="$artist->releaseYear"
                                 :image="$artist->image"
+                                :artist="$artist"
                             />
                         </a>
                         @endforeach
