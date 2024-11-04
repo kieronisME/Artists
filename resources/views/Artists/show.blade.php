@@ -15,6 +15,7 @@
                         :rating="$artist->rating"
                         :releaseYear="$artist->releaseYear"
                         :image="$artist->image"
+                        :Song="$artist->Song"
                     />
             </div>
         </div>

@@ -11,7 +11,7 @@
                 <h3 class="font-semibold text-lg mb-4">List of Artists:</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         @foreach($Artist as $artist)  <!-- Artists -->
-                        <a href="{{route('Artists.show', $artist)}}">
+                        
                             <x-artist-card
                                 :title="$artist->title"
                                 :rating="$artist->rating"
@@ -19,7 +19,7 @@
                                 :image="$artist->image"
                                 :artist="$artist"
                             />
-                        </a>
+                        
                         @endforeach
 
                         <x-alert-success>

@@ -18,8 +18,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/artists/{artist}/edit', [ArtistController::class, 'edit'])->name('Artists.edit');
     Route::delete('/artists/{artist}', [ArtistController::class, 'destroy'])->name('Artists.destroy');
  
-
-
     Route::get('/artists/create', [ArtistController::class, 'create'])->name('Artists.create');
     Route::post('/artists', [ArtistController::class, 'store'])->name('Artists.store');
     Route::get('/artists', [ArtistController::class, 'index'])->name('Artists.index');
