@@ -6,8 +6,13 @@
     <p class="text-gray-600">({{ $releaseYear }})</p>
     <p class="text-gray-800">({{ $rating }})</p>
     
+    
     <a href="{{ route('Artists.edit', $artist) }}" class="bg-green-800">
         edit
+    </a>
+
+    <a href="{{ route('Artists.show', $artist) }}" class="bg-green-800">
+        View
     </a>
 
     <form action="{{ route('Artists.destroy', $artist) }}" method="POST" onsubmit="return confirm('This action is permanent!');">

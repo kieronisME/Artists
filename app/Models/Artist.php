@@ -14,6 +14,7 @@ class Artist extends Model
     'title',
     'rating',
     'releaseYear',
+    'Song',
     'image',
     ];
 }
