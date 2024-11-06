@@ -41,11 +41,13 @@ class ArtistController extends Controller
             'image' => 'required|image|mimes:jpeg,png,gif|max:2048',
         ]);
 
+        //saves image with timestamp
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('ArtistImg/images'), $imageName);
         }
-
+        
+        //creating new artist in DB
         Artist::create([
             'title' => $request->title,
             'rating' => $request->rating,

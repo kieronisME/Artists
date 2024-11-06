@@ -13,14 +13,13 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
 
-    // Route::get('/artists', [ArtistController::class, 'update'])->name('Artists.update');
+    //crud
     Route::put('/artists/{artist}', [ArtistController::class, 'update'])->name('Artists.update');
     Route::get('/artists/{artist}/edit', [ArtistController::class, 'edit'])->name('Artists.edit');
     Route::delete('/artists/{artist}', [ArtistController::class, 'destroy'])->name('Artists.destroy');
- 
-
-
     Route::get('/artists/create', [ArtistController::class, 'create'])->name('Artists.create');
+
+    //others 
     Route::post('/artists', [ArtistController::class, 'store'])->name('Artists.store');
     Route::get('/artists', [ArtistController::class, 'index'])->name('Artists.index');
     Route::get('/artists/{artist}', [ArtistController::class, 'show'])->name('Artists.show');
