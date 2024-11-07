@@ -9,28 +9,28 @@ use Illuminate\Http\Request;
 
 class ArtistController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * if somethings wrong its here
-     */
+    public function fav()
+    {
+        $Artist = Artist::all();
+        return view('Artists.fav', compact('Artist'));
+
+    }
+
+
     public function index()
     {
         $Artist = Artist::all();
         return view('Artists.index', compact('Artist'));
     }
 
-    /**
-     * Show the form for creating a new resource. ?????????????
-     */
+
     public function create()
     {
         return view('Artists.create');
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         //validations 

@@ -12,6 +12,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    //extra
+    Route::get('/artists/fav', [ArtistController::class, 'fav'])->name('Artists.fav');
 
     //crud
     Route::put('/artists/{artist}', [ArtistController::class, 'update'])->name('Artists.update');

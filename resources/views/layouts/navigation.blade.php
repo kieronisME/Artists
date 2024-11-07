@@ -25,6 +25,10 @@
                         {{ __('Add album!!') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('Artists.fav')" :active="request()->routeIs('Artists.fav')">
+                        {{ __('See your Favorites') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 

@@ -22,4 +22,8 @@
             Delete
         </button>
     </form>
+
+    <a href="{{ route('Artists.fav', $artist) }}" class="bg-blue-800 rounded-lg mr-4 my-6 text-white py-2 px-2 hover:bg-blue-400">
+        FAV
+    </a>
 </div>
