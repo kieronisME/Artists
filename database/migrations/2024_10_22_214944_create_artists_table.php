@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->integer('rating');
-            $table->date('releaseYear');
+            $table->integer('releaseYear');
             $table->string('image');
             $table->text('Song')->nullable();
             $table->timestamps();

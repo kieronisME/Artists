@@ -64,6 +64,7 @@ class ArtistController extends Controller
      */
     public function show(Artist $artist)
     {
+        
         return view('Artists.show')->with('artist', $artist);
     }
 

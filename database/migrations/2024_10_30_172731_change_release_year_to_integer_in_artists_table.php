@@ -23,7 +23,7 @@ class ChangeReleaseYearToIntegerInArtistsTable extends Migration
     public function down()
     {
         Schema::table('artists', function (Blueprint $table) {
-            $table->date('releaseYear')->after('rating'); 
+            $table->integer('releaseYear')->after('rating'); 
         });
     }
 }
