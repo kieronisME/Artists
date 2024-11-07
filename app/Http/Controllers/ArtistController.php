@@ -9,13 +9,7 @@ use Illuminate\Http\Request;
 
 class ArtistController extends Controller
 {
-    public function fav()
-    {
-        $Artist = Artist::all();
-        return view('Artists.fav', compact('Artist'));
-
-    }
-
+    
 
     public function index()
     {

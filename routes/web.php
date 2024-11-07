@@ -13,7 +13,9 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     //extra
-    Route::get('/artists/fav', [ArtistController::class, 'fav'])->name('Artists.fav');
+    Route::get('/artists/{artist}/fav', [ArtistController::class, 'favorite'])->name('Artists.fav');
+    Route::get('/artists/favorites', [ArtistController::class, 'favorites'])->name('Artists.favorites');
+
 
     //crud
     Route::put('/artists/{artist}', [ArtistController::class, 'update'])->name('Artists.update');
