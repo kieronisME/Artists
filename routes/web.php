@@ -13,8 +13,8 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     //extra
-    Route::get('/artists/{artist}/fav', [ArtistController::class, 'favorite'])->name('Artists.fav');
-    Route::get('/artists/favorites', [ArtistController::class, 'favorites'])->name('Artists.favorites');
+    Route::get('/artists/fav', [ArtistController::class, 'fav'])->name('Artists.fav');
+    
 
 
     //crud
@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/artists', [ArtistController::class, 'index'])->name('Artists.index');
     Route::get('/artists/{artist}', [ArtistController::class, 'show'])->name('Artists.show');
 
-    //dont touch this
+    //dont touch this yet
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

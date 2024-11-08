@@ -3,13 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artist;
+use App\Models\fav;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 
 class ArtistController extends Controller
 {
-    
+
+    public function fav()
+    {
+        $fav= fav::all(); //could be an issue 
+        return view('Artists.fav', compact('fav'));
+    }
 
     public function index()
     {
@@ -24,7 +31,7 @@ class ArtistController extends Controller
 
     }
 
-    
+
     public function store(Request $request)
     {
         //validations 
@@ -40,7 +47,7 @@ class ArtistController extends Controller
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('ArtistImg/images'), $imageName);
         }
-        
+
         //creating new artist in DB
         Artist::create([
             'title' => $request->title,
@@ -58,7 +65,7 @@ class ArtistController extends Controller
      */
     public function show(Artist $artist)
     {
-        
+
         return view('Artists.show')->with('artist', $artist);
     }
 
@@ -69,7 +76,7 @@ class ArtistController extends Controller
 
     public function edit(Artist $artist)
     {
- 
+
         return view('Artists.edit', compact('artist'));
     }
 
@@ -120,7 +127,7 @@ class ArtistController extends Controller
         if ($artist->image) {
             Storage::delete('ArtistImg/images/' . $artist->image);
         }
-        
+
         $artist->delete();
         return redirect()->route('Artists.index')->with('success', 'Artist deleted successfully!');
     }

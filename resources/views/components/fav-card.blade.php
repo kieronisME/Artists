@@ -7,10 +7,10 @@
     <p class="text-gray-800 mb-3">{{ $rating }} star Rating </p>
 
 
-    <a href="{{ route('Artists.edit', $artist) }}"
+    <!-- <a href="{{ route('Artists.edit', $artist) }}"
         class="bg-green-800 rounded-lg mr-2 my-6 text-white py-2 px-2 hover:bg-green-700">
         Edit
-    </a>
+    </a> -->
 
     <a href="{{ route('Artists.show', $artist) }}"
         class="bg-blue-800 rounded-lg mr-4 my-6 text-white py-2 px-2 hover:bg-blue-400">
@@ -27,11 +27,11 @@
     </form>
 
 <!-- you -->
-    <form action="{{ route('Artists.fav', $artist) }}" 
+    <!-- <form action="{{ route('Artists.fav', $artist) }}" 
         <button type="submit" class="bg-pink-800 rounded-lg mr-4 my-6 text-white py-2 px-2 hover:bg-pink-400">
             Heart
         </button>
-    </form>
+    </form> -->
 
 
 

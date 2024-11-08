@@ -12,13 +12,13 @@
                
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        @foreach($Artist as $artist)  
-                            <x-artist-card
-                                :title="$artist->title"
-                                :rating="$artist->rating"
-                                :releaseYear="$artist->releaseYear"
-                                :image="$artist->image"
-                                :artist="$artist"
+                        @foreach($fav as $favs)  
+                            <x-fav-card
+                                :title="$favs->title"
+                                :rating="$favs->rating"
+                                :releaseYear="$favs->releaseYear"
+                                :image="$favs->image"
+                                :artist="$favs"
                             />
                         
                         @endforeach
