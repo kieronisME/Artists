@@ -25,9 +25,15 @@
                         {{ __('Add album!!') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('Artists.fav')" :active="request()->routeIs('Artists.fav')">
-                        {{ __('view your favorites') }}
+                    <x-nav-link :href="route('Artists.fiveStar')" :active="request()->routeIs('Artists.fiveStar')">
+                        {{ __('Five star albums') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('Artists.year')" :active="request()->routeIs('Artists.year')">
+                        {{ __('albums made in teh 2000s') }}
+                    </x-nav-link>
+
+                  
 
                 
 

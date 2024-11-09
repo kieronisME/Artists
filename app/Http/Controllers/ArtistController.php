@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artist;
-use App\Models\fav;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
@@ -12,10 +11,17 @@ use Illuminate\Contracts\View\View;
 class ArtistController extends Controller
 {
 
-    public function fav()
+ 
+    public function fiveStaralbum()
     {
-        $fav= fav::all(); //could be an issue 
-        return view('Artists.fav', compact('fav'));
+        $fiveStaralbum = Artist::where('rating', 5)->get();
+        return view('Artists.fiveStar', compact('fiveStaralbum'));
+    }
+
+    public function year()
+    {
+        $year = Artist::where('releaseYear','>',2000)->get();
+        return view('Artists.year', compact('year'));
     }
 
     public function index()

@@ -13,7 +13,8 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     //extra
-    Route::get('/artists/fav', [ArtistController::class, 'fav'])->name('Artists.fav');
+    Route::get('/artists/fiveStar', [ArtistController::class, 'fiveStaralbum'])->name('Artists.fiveStar');
+    Route::get('/artists/year', [ArtistController::class, 'year'])->name('Artists.year');
     
 
 
