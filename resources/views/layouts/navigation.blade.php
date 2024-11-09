@@ -30,7 +30,7 @@
                     </x-nav-link>
 
                     <x-nav-link :href="route('Artists.year')" :active="request()->routeIs('Artists.year')">
-                        {{ __('albums made in teh 2000s') }}
+                        {{ __('albums made in the 21st century') }}
                     </x-nav-link>
 
                   

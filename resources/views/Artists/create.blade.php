@@ -1,4 +1,3 @@
-<!-- this is the add a new artist page where i add artist -->
 
 <x-app-layout>
     <x-slot name="header">

@@ -1,4 +1,4 @@
-@props(['action', 'method'])
+@props(['action', 'method', 'artist' => null])
 <form action="{{ $action }}" method="POST" enctype="multipart/form-data">
     @csrf
     @if($method === 'PUT' || $method === 'PATCH')
@@ -33,17 +33,20 @@
         @enderror
     </div>
 
-    
+
     <div class="mb-4">
-        <label for="Songs" class="block text-sm text-gray-700">Song</label>
-        <label for="Songs" class="block text-sm text-gray-700">Too add album of choice Spotify> Album of choice> click the . . .> share> embeded album> show code and copy the url only from https to the last word DONT INCLUDE  " "  </label>
-        <input type="text" name="Songs" id="Songs" value="{{ old('Songs', $artist->Songs ?? '') }}" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" /> 
-        @error('Songs') 
+        <label for="Song" class="block text-sm text-gray-700">Song</label>
+        <label for="Song" class="block text-sm text-gray-700">Too add album of choice Spotify> Album of choice> click
+            the . . .> share> embeded album> show code and copy the url only from https to the last word DONT INCLUDE "
+            " </label>
+        <input type="text" name="Song" id="Song" value="{{ old('Song', $artist->Song ?? '') }}" required
+            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+        @error('Songs')
             <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
-        
-    </div>  
-  
+
+    </div>
+     
 
     <div class="mb-4">
         <label for="image" class="block text-sm font-medium text-gray-700">Artist Cover Image</label>
@@ -56,7 +59,7 @@
 
     @isset($artist->image) 
         <div class="mb-4">
-            <img src="{{ asset($artist->image) }}" alt="Artist cover" class="w-24 h-32 object-cover">
+            <img src="{{ asset("ArtistImg/images/" . $artist->image) }}" alt="Artist cover" class="w-24 h-32 object-cover">
         </div>
     @endisset
 
@@ -66,5 +69,5 @@
         </x-primary-button>
     </div>
 
- 
+
 </form>

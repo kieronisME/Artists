@@ -14,7 +14,7 @@ class ArtistSeeder extends Seeder
     {
         // adjust date to intagers 
         Artist::insert([
-            ['title' => 'everyone hates chris!','rating' => 4,'releaseYear' => 2020,'image' => 'everyone hates chris!.png','Song' => 'https://open.spotify.com/embed/album/6rftgjBlxG7zFviyk6Zt5q?utm_source=generator&theme=0'],
+            ['title' => 'CONGLOMERATE','rating' => 4,'releaseYear' => 2024,'image' => 'afterlife.png','Song' => 'https://open.spotify.com/embed/album/3cb1xcLTVs1ovpTCXAq2EP?utm_source=generator'],
             ['title' => 'FREEWAVE3', 'rating' => 5, 'releaseYear' => 2019, 'image' => 'FREEWAVE3.png', 'Song' => 'https://open.spotify.com/embed/album/4PKdUHGtcJtsjhIaR4fjMk?utm_source=generator'],
             ['title' => 'Benbow Crescent', 'rating' => 3, 'releaseYear' => 2021, 'image' => 'Benbow Crescent.png', 'Song' => 'https://open.spotify.com/embed/album/3QXYqRVyBQfNK3MDn82hVF?utm_source=generator'],
             ['title' => 'BIPOLAR', 'rating' => 5, 'releaseYear' => 2024, 'image' => 'BIPOLAR.png', 'Song' => 'https://open.spotify.com/embed/album/2eX1wRjclgcIWa1WIMKrfc?utm_source=generator'],

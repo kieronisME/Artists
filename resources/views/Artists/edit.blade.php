@@ -9,15 +9,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h3 class="font-semibold text-lg mb-4">update Artist: {{ $artist->title }}</h3>
+                    <h3 class="font-semibold text-lg mb-4">Update Artist: {{ $artist->title }}</h3>
                     
                     <x-artist-form 
                         :action="route('Artists.update', $artist->id)" 
                         method="PUT" 
-                        :title="$artist->title" 
-                        :rating="$artist->rating" 
-                        :releaseYear="$artist->releaseYear" 
-                        :image="$artist->image" 
                         :artist="$artist"
                     />
                 </div>

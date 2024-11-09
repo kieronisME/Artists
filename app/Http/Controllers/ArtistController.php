@@ -11,7 +11,7 @@ use Illuminate\Contracts\View\View;
 class ArtistController extends Controller
 {
 
- 
+
     public function fiveStaralbum()
     {
         $fiveStaralbum = Artist::where('rating', 5)->get();

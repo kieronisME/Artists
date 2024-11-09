@@ -5,6 +5,7 @@
     <img src="{{ asset('ArtistImg/images/' . $image) }}" alt="{{ $title }}">
     <p class="text-gray-600">Release Year {{ $releaseYear }} </p>
     <p class="text-gray-800 mb-3">{{ $rating }} star Rating </p>
+    
 
 
     <a href="{{ route('Artists.edit', $artist) }}"
