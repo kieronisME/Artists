@@ -10,7 +10,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h3 class="font-semibold text-lg mb-4">Update Artist: {{ $artist->title }}</h3>
-                    
+                    <!-- laravl knows this from is a link to artist.form so it directs it there -->
+                     <!-- sends the request back to update route -->
                     <x-artist-form 
                         :action="route('Artists.update', $artist->id)" 
                         method="PUT" 

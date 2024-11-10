@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 
-//write comments for this later
+//chaned realse year from DATE to int so i could query it easier 
 class ChangeReleaseYearToIntegerInArtistsTable extends Migration
 {
     public function up()

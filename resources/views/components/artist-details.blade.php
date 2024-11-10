@@ -8,7 +8,7 @@
 
 
 
-        <!-- Artist Cover Image -->
+        <!-- Artist Cover Imagess -->
 
         <div class="overflow-hidden rounded-lg mb-4 flex justify-center">
 

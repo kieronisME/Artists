@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+ // creates table in database
     public function up(): void
     {
         Schema::create('Artists', function (Blueprint $table) {

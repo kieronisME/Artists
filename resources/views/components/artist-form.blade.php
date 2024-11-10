@@ -6,6 +6,7 @@
     @endif
     <div class="mb-4">
         <label for="title" class="block text-sm text-gray-700">Title</label>
+        <!-- dispalys old data -->
         <input type="text" name="title" id="title" value="{{ old('title', $artist->title ?? '') }}" required
             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
         @error('title')

@@ -11,10 +11,12 @@ use Illuminate\Contracts\View\View;
 class ArtistController extends Controller
 {
 
-
+ 
     public function fiveStaralbum()
     {
+        //gets all albums with 5 star rating
         $fiveStaralbum = Artist::where('rating', 5)->get();
+        //stores inside of fivStarAlbum
         return view('Artists.fiveStar', compact('fiveStaralbum'));
     }
 
@@ -66,32 +68,19 @@ class ArtistController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Artist $artist)
     {
 
         return view('Artists.show')->with('artist', $artist);
     }
 
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-
     public function edit(Artist $artist)
     {
-
         return view('Artists.edit', compact('artist'));
     }
 
 
-
-
-    /**
-     * Update the specified resource in storage.
-     */
 
     public function update(Request $request, Artist $artist)
     {
@@ -103,7 +92,7 @@ class ArtistController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,gif|max:2048',
         ]);
 
-
+  // checks if image uplaoded
         if ($request->hasFile('image')) {
             if ($artist->image) {
                 Storage::delete('ArtistImg/images/' . $artist->image);
@@ -113,7 +102,7 @@ class ArtistController extends Controller
             $request->image->move(public_path('ArtistImg/images'), $imageName);
             $artist->image = $imageName;
         }
-
+   // assighnes new meaning to each 
         $artist->title = $request->title;
         $artist->rating = $request->rating;
         $artist->releaseYear = $request->releaseYear;
