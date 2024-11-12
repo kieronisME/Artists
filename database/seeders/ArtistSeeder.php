@@ -10,7 +10,7 @@ class ArtistSeeder extends Seeder
     
     public function run(): void
     {
-        // adds info to the database
+        // adds info to the database testgt
         Artist::insert([
             ['title' => 'CONGLOMERATE','rating' => 4,'releaseYear' => 2024,'image' => 'afterlife.png','Song' => 'https://open.spotify.com/embed/album/3cb1xcLTVs1ovpTCXAq2EP?utm_source=generator'],
             ['title' => 'FREEWAVE3', 'rating' => 5, 'releaseYear' => 2019, 'image' => 'FREEWAVE3.png', 'Song' => 'https://open.spotify.com/embed/album/4PKdUHGtcJtsjhIaR4fjMk?utm_source=generator'],
