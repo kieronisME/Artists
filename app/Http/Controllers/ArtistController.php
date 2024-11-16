@@ -11,7 +11,6 @@ use Illuminate\Contracts\View\View;
 class ArtistController extends Controller
 {
 
- 
     public function fiveStaralbum()
     {
         //gets all albums with 5 star rating
@@ -35,8 +34,11 @@ class ArtistController extends Controller
 
     public function create()
     {
+        if(auth()->user()->role !== 'admin') {
+            return redirect()->route('Artist.index')->with('error','');
+        }
         return view('Artists.create');
-
+        
     }
 
 

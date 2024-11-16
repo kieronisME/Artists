@@ -15,6 +15,7 @@ Route::middleware('auth')->group(function () {
     //extra
     Route::get('/artists/fiveStar', [ArtistController::class, 'fiveStaralbum'])->name('Artists.fiveStar');
     Route::get('/artists/year', [ArtistController::class, 'year'])->name('Artists.year');
+   
     
 
 

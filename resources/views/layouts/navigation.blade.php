@@ -16,14 +16,15 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-
                     <x-nav-link :href="route('Artists.index')" :active="request()->routeIs('Artists.index')">
                         {{ __('view all artist!') }}
                     </x-nav-link>
-
+                 
+                 @if(auth()->user()->role === 'admin')
                     <x-nav-link :href="route('Artists.create')" :active="request()->routeIs('Artists.create')">
-                        {{ __('Add album!!') }}
+                        {{ __('Create album!!') }}
                     </x-nav-link>
+                 @endif
 
                     <x-nav-link :href="route('Artists.fiveStar')" :active="request()->routeIs('Artists.fiveStar')">
                         {{ __('Five star albums') }}
@@ -33,8 +34,9 @@
                         {{ __('albums made in the 21st century') }}
                     </x-nav-link>
 
-                  
+                 
 
+                
                 
 
                 </div>
