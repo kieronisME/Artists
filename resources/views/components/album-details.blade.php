@@ -2,13 +2,13 @@
 <div class="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300 max-w-xl mx-auto">
     <!-- Limit the overall container width to make the component more compact -->
 
-        <!-- Artist Title -->
+        <!-- Album Title -->
 
         <h1 class="font-bold text-black-600 mb-2" style="font-size: 3rem;">{{ $title }}</h1>
 
 
 
-        <!-- Artist Cover Imagess -->
+        <!-- Album Cover Imagess -->
 
         <div class="overflow-hidden rounded-lg mb-4 flex justify-center">
 
@@ -28,7 +28,7 @@
 
 
 
-        <!-- Artist Description -->
+        <!-- Album Description -->
 
         <h3 class="text-gray-800 font-semibold mb-2" style="font-size: 2rem;">rating</h3>
     <!-- Subheading for description -->

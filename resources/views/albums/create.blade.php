@@ -2,7 +2,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create New Artist') }}
+            {{ __('Create New Album') }}
         </h2>
     </x-slot>
 
@@ -10,8 +10,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h3 class="font-semibold text-lg mb-4">Add a New Artist</h3>
-                    <x-artist-form :action="route('Artists.store')" method="POST" />
+                    <h3 class="font-semibold text-lg mb-4">Add a New Album</h3>
+                    <x-album-form :action="route('Albums.store')" method="POST" />
                 </div>
             </div>
         </div>

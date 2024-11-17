@@ -1,4 +1,4 @@
-@props(['title', 'rating', 'releaseYear', 'image', 'artist'])
+@props(['title', 'rating', 'releaseYear', 'image', 'album'])
 
 <div class="border rounded-lg shadow-md p-6 bg-black hover:shadow-lg transition duration-300">
     <h4 class="font-bold text-lg">{{ $title }}</h4>
@@ -8,17 +8,17 @@
     
 
 
-    <a href="{{ route('Artists.edit', $artist) }}"
+    <a href="{{ route('Albums.edit', $album) }}"
         class="bg-green-800 rounded-lg mr-2 my-6 text-white py-2 px-2 hover:bg-green-700">
         Edit
     </a>
 
-    <a href="{{ route('Artists.show', $artist) }}"
+    <a href="{{ route('Albums.show', $album) }}"
         class="bg-blue-800 rounded-lg mr-4 my-6 text-white py-2 px-2 hover:bg-blue-400">
         View
     </a>
 
-    <form action="{{ route('Artists.destroy', $artist) }}" method="POST"
+    <form action="{{ route('Albums.destroy', $album) }}" method="POST"
         onsubmit="return confirm('This action is permanent!');">
         @csrf
         @method('DELETE')

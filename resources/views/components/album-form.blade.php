@@ -1,4 +1,4 @@
-@props(['action', 'method', 'artist' => null])
+@props(['action', 'method', 'album' => null])
 <form action="{{ $action }}" method="POST" enctype="multipart/form-data">
     @csrf
     @if($method === 'PUT' || $method === 'PATCH')
@@ -7,7 +7,7 @@
     <div class="mb-4">
         <label for="title" class="block text-sm text-gray-700">Title</label>
         <!-- dispalys old data -->
-        <input type="text" name="title" id="title" value="{{ old('title', $artist->title ?? '') }}" required
+        <input type="text" name="title" id="title" value="{{ old('title', $album->title ?? '') }}" required
             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
         @error('title')
             <p class="text-sm text-red-600">{{ $message }}</p>
@@ -18,7 +18,7 @@
     <div class="mb-4">
         <label for="releaseYear" class="block text-sm text-gray-700">releaseYear</label>
         <input type="text" name="releaseYear" id="releaseYear"
-            value="{{ old('releaseYear', $artist->releaseYear ?? '') }}" required
+            value="{{ old('releaseYear', $album->releaseYear ?? '') }}" required
             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
         @error('releaseYear')
             <p class="text-sm text-red-600">{{ $message }}</p>
@@ -27,7 +27,7 @@
 
     <div class="mb-4">
         <label for="rating" class="block text-sm text-gray-700">rating</label>
-        <input type="text" name="rating" id="rating" value="{{ old('rating', $artist->rating ?? '') }}" required
+        <input type="text" name="rating" id="rating" value="{{ old('rating', $album->rating ?? '') }}" required
             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
         @error('rating')
             <p class="text-sm text-red-600">{{ $message }}</p>
@@ -40,7 +40,7 @@
         <label for="Song" class="block text-sm text-gray-700">Too add album of choice Spotify> Album of choice> click
             the . . .> share> embeded album> show code and copy the url only from https to the last word DONT INCLUDE "
             " </label>
-        <input type="text" name="Song" id="Song" value="{{ old('Song', $artist->Song ?? '') }}" required
+        <input type="text" name="Song" id="Song" value="{{ old('Song', $album->Song ?? '') }}" required
             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
         @error('Songs')
             <p class="text-sm text-red-600">{{ $message }}</p>
@@ -50,23 +50,23 @@
      
 
     <div class="mb-4">
-        <label for="image" class="block text-sm font-medium text-gray-700">Artist Cover Image</label>
-        <input type="file" name="image" id="image" {{ isset($artist) ? '' : 'required' }}
+        <label for="image" class="block text-sm font-medium text-gray-700">Album Cover Image</label>
+        <input type="file" name="image" id="image" {{ isset($album) ? '' : 'required' }}
             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
         @error('image')
             <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
     </div>
 
-    @isset($artist->image) 
+    @isset($album->image) 
         <div class="mb-4">
-            <img src="{{ asset("ArtistImg/images/" . $artist->image) }}" alt="Artist cover" class="w-24 h-32 object-cover">
+            <img src="{{ asset("ArtistImg/images/" . $album->image) }}" alt="Album cover" class="w-24 h-32 object-cover">
         </div>
     @endisset
 
     <div>
         <x-primary-button>
-            {{ isset($artist) ? 'Update Artist' : 'Add Artist' }}
+            {{ isset($album) ? 'Update Album' : 'Add Album' }}
         </x-primary-button>
     </div>
 

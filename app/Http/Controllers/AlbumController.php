@@ -2,42 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Artist;
+use App\Models\Album;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 
-class ArtistController extends Controller
+class AlbumController extends Controller
 {
 
     public function fiveStaralbum()
     {
         //gets all albums with 5 star rating
-        $fiveStaralbum = Artist::where('rating', 5)->get();
+        $fiveStaralbum = Album::where('rating', 5)->get();
         //stores inside of fivStarAlbum
-        return view('Artists.fiveStar', compact('fiveStaralbum'));
+        return view('Albums.fiveStar', compact('fiveStaralbum'));
     }
 
     public function year()
     {
-        $year = Artist::where('releaseYear','>',2000)->get();
-        return view('Artists.year', compact('year'));
+        $year = Album::where('releaseYear','>',2000)->get();
+        return view('Albums.year', compact('year'));
     }
 
     public function index()
     {
-        $Artist = Artist::all();
-        return view('Artists.index', compact('Artist'));
+        $Album = Album::all();
+        return view('Albums.index', compact('Album'));
     }
 
 
     public function create()
     {
         if(auth()->user()->role !== 'admin') {
-            return redirect()->route('Artist.index')->with('error','');
+            return redirect()->route('Album.index')->with('error','');
         }
-        return view('Artists.create');
+        return view('Albums.create');
         
     }
 
@@ -58,33 +58,33 @@ class ArtistController extends Controller
             $request->image->move(public_path('ArtistImg/images'), $imageName);
         }
 
-        //creating new artist in DB
-        Artist::create([
+        //creating new album in DB
+        Album::create([
             'title' => $request->title,
             'rating' => $request->rating,
             'releaseYear' => $request->releaseYear,
             'image' => $imageName,
         ]);
 
-        return to_route('Artists.index')->with('success', 'You just added another album!!!');
+        return to_route('Albums.index')->with('success', 'You just added another album!!!');
     }
 
 
 
-    public function show(Artist $artist)
+    public function show(Album $album)
     {
 
-        return view('Artists.show')->with('artist', $artist);
+        return view('Albums.show')->with('album', $album);
     }
 
-    public function edit(Artist $artist)
+    public function edit(Album $album)
     {
-        return view('Artists.edit', compact('artist'));
+        return view('Albums.edit', compact('album'));
     }
 
 
 
-    public function update(Request $request, Artist $artist)
+    public function update(Request $request, Album $album)
     {
         // Validations
         $request->validate([
@@ -96,21 +96,21 @@ class ArtistController extends Controller
 
   // checks if image uplaoded
         if ($request->hasFile('image')) {
-            if ($artist->image) {
-                Storage::delete('ArtistImg/images/' . $artist->image);
+            if ($album->image) {
+                Storage::delete('ArtistImg/images/' . $album->image);
             }
 
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('ArtistImg/images'), $imageName);
-            $artist->image = $imageName;
+            $album->image = $imageName;
         }
    // assighnes new meaning to each 
-        $artist->title = $request->title;
-        $artist->rating = $request->rating;
-        $artist->releaseYear = $request->releaseYear;
-        $artist->save();
+        $album->title = $request->title;
+        $album->rating = $request->rating;
+        $album->releaseYear = $request->releaseYear;
+        $album->save();
 
-        return redirect()->route('Artists.index')->with('success', 'Artist updated successfully!');
+        return redirect()->route('Albums.index')->with('success', 'Album updated successfully!');
 
     }
 
@@ -118,15 +118,15 @@ class ArtistController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Artist $artist)
+    public function destroy(Album $album)
     {
 
-        if ($artist->image) {
-            Storage::delete('ArtistImg/images/' . $artist->image);
+        if ($album->image) {
+            Storage::delete('ArtistImg/images/' . $album->image);
         }
 
-        $artist->delete();
-        return redirect()->route('Artists.index')->with('success', 'Artist deleted successfully!');
+        $album->delete();
+        return redirect()->route('Albums.index')->with('success', 'Album deleted successfully!');
     }
 }
 

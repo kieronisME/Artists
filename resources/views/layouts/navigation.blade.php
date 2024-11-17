@@ -16,21 +16,21 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('Artists.index')" :active="request()->routeIs('Artists.index')">
-                        {{ __('view all artist!') }}
+                    <x-nav-link :href="route('Albums.index')" :active="request()->routeIs('Albums.index')">
+                        {{ __('view all album!') }}
                     </x-nav-link>
                  
                  @if(auth()->user()->role === 'admin')
-                    <x-nav-link :href="route('Artists.create')" :active="request()->routeIs('Artists.create')">
+                    <x-nav-link :href="route('Albums.create')" :active="request()->routeIs('Albums.create')">
                         {{ __('Create album!!') }}
                     </x-nav-link>
                  @endif
 
-                    <x-nav-link :href="route('Artists.fiveStar')" :active="request()->routeIs('Artists.fiveStar')">
+                    <x-nav-link :href="route('Albums.fiveStar')" :active="request()->routeIs('Albums.fiveStar')">
                         {{ __('Five star albums') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('Artists.year')" :active="request()->routeIs('Artists.year')">
+                    <x-nav-link :href="route('Albums.year')" :active="request()->routeIs('Albums.year')">
                         {{ __('albums made in the 21st century') }}
                     </x-nav-link>
 

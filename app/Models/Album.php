@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Notifications\Notifiable;
 
-class Artist extends Model
+class Album extends Model
 {
     use HasFactory;
     protected $fillable = [

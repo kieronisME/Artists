@@ -9,7 +9,7 @@ return new class extends Migration
  // creates table in database
     public function up(): void
     {
-        Schema::create('Artists', function (Blueprint $table) {
+        Schema::create('Albums', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->integer('rating');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Artists');
+        Schema::dropIfExists('Albums');
     }
 };

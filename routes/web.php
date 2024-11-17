@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,22 +13,22 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     //extra
-    Route::get('/artists/fiveStar', [ArtistController::class, 'fiveStaralbum'])->name('Artists.fiveStar');
-    Route::get('/artists/year', [ArtistController::class, 'year'])->name('Artists.year');
+    Route::get('/albums/fiveStar', [AlbumController::class, 'fiveStaralbum'])->name('Albums.fiveStar');
+    Route::get('/albums/year', [AlbumController::class, 'year'])->name('Albums.year');
    
     
 
 
     //crud
-    Route::put('/artists/{artist}', [ArtistController::class, 'update'])->name('Artists.update');
-    Route::get('/artists/{artist}/edit', [ArtistController::class, 'edit'])->name('Artists.edit');
-    Route::delete('/artists/{artist}', [ArtistController::class, 'destroy'])->name('Artists.destroy');
-    Route::get('/artists/create', [ArtistController::class, 'create'])->name('Artists.create');
+    Route::put('/albums/{album}', [AlbumController::class, 'update'])->name('Albums.update');
+    Route::get('/albums/{album}/edit', [AlbumController::class, 'edit'])->name('Albums.edit');
+    Route::delete('/albums/{album}', [AlbumController::class, 'destroy'])->name('Albums.destroy');
+    Route::get('/albums/create', [AlbumController::class, 'create'])->name('Albums.create');
 
     //others 
-    Route::post('/artists', [ArtistController::class, 'store'])->name('Artists.store');
-    Route::get('/artists', [ArtistController::class, 'index'])->name('Artists.index');
-    Route::get('/artists/{artist}', [ArtistController::class, 'show'])->name('Artists.show');
+    Route::post('/albums', [AlbumController::class, 'store'])->name('Albums.store');
+    Route::get('/albums', [AlbumController::class, 'index'])->name('Albums.index');
+    Route::get('/albums/{album}', [AlbumController::class, 'show'])->name('Albums.show');
 
     //dont touch this yet
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

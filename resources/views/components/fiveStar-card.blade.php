@@ -1,4 +1,4 @@
-@props(['title', 'rating', 'releaseYear', 'image', 'artist'])
+@props(['title', 'rating', 'releaseYear', 'image', 'album'])
 
 <div class="border rounded-lg shadow-md p-6 bg-black hover:shadow-lg transition duration-300">
     <h4 class="font-bold text-lg">{{ $title }}</h4>
@@ -8,7 +8,7 @@
 
 
 
-    <a href="{{ route('Artists.show', $artist) }}"
+    <a href="{{ route('Albums.show', $album) }}"
         class="bg-blue-800 rounded-lg mr-4 my-6 text-white py-2 px-2 hover:bg-blue-400">
         View
     </a>
