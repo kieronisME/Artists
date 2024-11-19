@@ -13,8 +13,8 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
 
-Route::resource('producers', AlbumController::class);
-Route::get('/albums/{album}/producers', [AlbumController::class, 'store'])->name('Albums.store');
+Route::resource('comments', AlbumController::class);
+Route::get('/albums/{album}/comments', [AlbumController::class, 'store'])->name('Albums.store');
 
 
 

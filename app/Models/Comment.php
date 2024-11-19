@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Notifications\Notifiable;
 
-class Producer extends Model
+class Comment extends Model
 {
     use HasFactory;
   

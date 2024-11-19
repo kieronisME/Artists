@@ -17,6 +17,36 @@
                         :image="$album->image"
                         :embedLink="$album->embedLink"
                     />
+<h4 class="font-semibold text-md mt-8"> Proucers</h4>
+@if($album->comment->isEmpty())
+<p class="test-gray-600"> no Producers yet</p>
+@endif
+<ul class="mt-4 space-y-4">
+    @foreach ( $album->comments as $comment )
+    <il class="bg-gray-100 p-4 rounded-lg">
+        <p class="font font-semibold">{{ $comment->user->name}}{{$comment->created_at->format('M d, Y')}}</p>
+        <p>{name: {$proucer}}</p>
+
+
+    </il>
+    
+
+
+    @endforeach
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+                    
             </div>
         </div>
     </div>

@@ -21,7 +21,7 @@ class Album extends Model
     //this makes it a one to many relationship
     public function Producers()
     {
-        return $this->hasMany(Producer::class);
+        return $this->hasMany(Comment::class);
 
     }
 

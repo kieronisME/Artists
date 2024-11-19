@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
-use App\Models\Producer;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
@@ -74,7 +74,7 @@ class AlbumController extends Controller
 
     public function show(Album $album)
     {
-        $album->load('producer.user');
+        $album->load('comment.user');
         return view('Albums.show')->with('album', $album);
     }
 

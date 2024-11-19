@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producer;
+use App\Models\Comment;
 use App\Models\Album;
 use Illuminate\Http\Request;
 
-class ProducerController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,53 +31,27 @@ class ProducerController extends Controller
     {
 
         $request->validate([
-            'name' => 'required|text',
-            'genre' => 'required|text',
-            'studio' => 'required|text',
-            'label' => 'required|text',
+            'comment' => 'required|string|max:500',
+            'rating' => 'required|integer|max:5',
 
         ]);
 
-        $album->producer()->create([
+        $album->comment()->create([
             'user_id' => auth()->id(),
-            'name' => $request->input('name'),
-            'genre' => $request->input('genre'),
-            'studio' => $request->input('studio'),
-            'label' => $request->input('label'),
+            'comment' => 'required|string|max:500',
+            'rating' => 'required|integer|max:5',
             'album_id' => $album->id
 
-
         ]);
 
-        return to_route('Albums.show', $album)->with('success', 'youjust added a producer');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return to_route('Albums.show', $album)->with('success', 'youjust added a comment');
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Producer $producer)
+    public function show(Comment $comment)
     {
         //
     }
@@ -85,7 +59,7 @@ class ProducerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Producer $producer)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -93,7 +67,7 @@ class ProducerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Producer $producer)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -101,7 +75,7 @@ class ProducerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Producer $producer)
+    public function destroy(Comment $comment)
     {
         //
     }
