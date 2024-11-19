@@ -12,13 +12,18 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
+Route::resource('producers', AlbumController::class);
+Route::get('/albums/{album}/producers', [AlbumController::class, 'store'])->name('Albums.store');
+
+
+
+
     //extra
     Route::get('/albums/fiveStar', [AlbumController::class, 'fiveStaralbum'])->name('Albums.fiveStar');
     Route::get('/albums/year', [AlbumController::class, 'year'])->name('Albums.year');
    
     
-
-
     //crud
     Route::put('/albums/{album}', [AlbumController::class, 'update'])->name('Albums.update');
     Route::get('/albums/{album}/edit', [AlbumController::class, 'edit'])->name('Albums.edit');

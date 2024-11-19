@@ -15,7 +15,7 @@
                         :rating="$album->rating"
                         :releaseYear="$album->releaseYear"
                         :image="$album->image"
-                        :Song="$album->Song"
+                        :embedLink="$album->embedLink"
                     />
             </div>
         </div>

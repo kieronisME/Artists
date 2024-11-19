@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
+use App\Models\Producer;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class AlbumController extends Controller
 
     public function year()
     {
-        $year = Album::where('releaseYear','>',2000)->get();
+        $year = Album::where('releaseYear', '>', 2000)->get();
         return view('Albums.year', compact('year'));
     }
 
@@ -34,11 +35,11 @@ class AlbumController extends Controller
 
     public function create()
     {
-        if(auth()->user()->role !== 'admin') {
-            return redirect()->route('Album.index')->with('error','');
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('Album.index')->with('error', '');
         }
         return view('Albums.create');
-        
+
     }
 
 
@@ -73,7 +74,7 @@ class AlbumController extends Controller
 
     public function show(Album $album)
     {
-
+        $album->load('producer.user');
         return view('Albums.show')->with('album', $album);
     }
 
@@ -94,7 +95,7 @@ class AlbumController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,gif|max:2048',
         ]);
 
-  // checks if image uplaoded
+        // checks if image uplaoded
         if ($request->hasFile('image')) {
             if ($album->image) {
                 Storage::delete('ArtistImg/images/' . $album->image);
@@ -104,7 +105,7 @@ class AlbumController extends Controller
             $request->image->move(public_path('ArtistImg/images'), $imageName);
             $album->image = $imageName;
         }
-   // assighnes new meaning to each 
+        // assighnes new meaning to each 
         $album->title = $request->title;
         $album->rating = $request->rating;
         $album->releaseYear = $request->releaseYear;

@@ -5,19 +5,21 @@
     <img src="{{ asset('ArtistImg/images/' . $image) }}" alt="{{ $title }}">
     <p class="text-gray-600">Release Year {{ $releaseYear }} </p>
     <p class="text-gray-800 mb-3">{{ $rating }} star Rating </p>
-    
 
 
-    <a href="{{ route('Albums.edit', $album) }}"
-        class="bg-green-800 rounded-lg mr-2 my-6 text-white py-2 px-2 hover:bg-green-700">
-        Edit
-    </a>
+    @if(auth()->user()->role === 'admin')
+        <a href="{{ route('Albums.edit', $album) }}"
+            class="bg-green-800 rounded-lg mr-2 my-6 text-white py-2 px-2 hover:bg-green-700">
+            Edit
+        </a>
+    @endif
 
     <a href="{{ route('Albums.show', $album) }}"
         class="bg-blue-800 rounded-lg mr-4 my-6 text-white py-2 px-2 hover:bg-blue-400">
         View
     </a>
-
+    
+    @if(auth()->user()->role === 'admin')
     <form action="{{ route('Albums.destroy', $album) }}" method="POST"
         onsubmit="return confirm('This action is permanent!');">
         @csrf
@@ -26,5 +28,5 @@
             Delete
         </button>
     </form>
-
+    @endif
 </div>

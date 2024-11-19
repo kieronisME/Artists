@@ -7,21 +7,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Notifications\Notifiable;
 
-class Album extends Model
+class Producer extends Model
 {
     use HasFactory;
+  
     protected $fillable = [
-        'title',
-        'rating',
-        'releaseYear',
-        'embedLink',
-        'image',
+        'name',
+        'genre',
+        'studio',
+        'label',
+        'album_id',
     ];
-
-    //this makes it a one to many relationship
-    public function Producers()
+   
+    public function Albums()
     {
-        return $this->hasMany(Producer::class);
+        return $this->belongsTo(Album::class);
+
+    }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class);
 
     }
 

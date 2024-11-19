@@ -36,11 +36,11 @@
 
 
     <div class="mb-4">
-        <label for="Song" class="block text-sm text-gray-700">Song</label>
-        <label for="Song" class="block text-sm text-gray-700">Too add album of choice Spotify> Album of choice> click
+        <label for="embedLink" class="block text-sm text-gray-700">embedLink</label>
+        <label for="embedLink" class="block text-sm text-gray-700">Too add album of choice Spotify> Album of choice> click
             the . . .> share> embeded album> show code and copy the url only from https to the last word DONT INCLUDE "
             " </label>
-        <input type="text" name="Song" id="Song" value="{{ old('Song', $album->Song ?? '') }}" required
+        <input type="text" name="embedLink" id="embedLink" value="{{ old('embedLink', $album->embedLink ?? '') }}" required
             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
         @error('Songs')
             <p class="text-sm text-red-600">{{ $message }}</p>
