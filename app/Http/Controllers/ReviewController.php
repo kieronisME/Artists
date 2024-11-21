@@ -6,7 +6,7 @@ use App\Models\Review;
 use App\Models\Album;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class ReviewController extends Controller
 {
 //################################################################################################################################################################################################################################
 //                                                                                                Index
@@ -68,7 +68,11 @@ class CommentController extends Controller
 //################################################################################################################################################################################################################################
     public function edit(Review $review)
     {
-        //
+       if (auth()->user()->id !== $review->user_id && auth()->user()->role !=='admin'){
+        return redirect()->route('albums.index')->with('error','Acess DENIED');
+       } 
+
+       return view('reviews.edit',compact('review'));
     }
 
    
@@ -78,7 +82,10 @@ class CommentController extends Controller
 //################################################################################################################################################################################################################################
     public function update(Request $request, Review $review)
     {
-        //
+        $review->update($request ->only(['rating','comment']));
+        return redirect()->route('albums.show', $review->book_id)
+                         ->with('YOU DID IT!','Review updated SUCCESSFULLY!!!!');
+        
     }
 
 //################################################################################################################################################################################################################################

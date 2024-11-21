@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,7 +21,8 @@ Route::middleware('auth')->group(function () {
 Route::resource('rating', AlbumController::class);
 Route::get('/albums/{album}/rating', [AlbumController::class, 'store'])->name('Albums.store');
 
-
+Route::resource('reviews', ReviewController::class);
+Route::post('/albums/{album}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
 
 //####################################################################################################//
