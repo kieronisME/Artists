@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Notifications\Notifiable;
 
-class Comment extends Model
+class Review extends Model
 {
     use HasFactory;
   
     protected $fillable = [
-        'comment',
+        'review',
         'rating' ,
       
     ];

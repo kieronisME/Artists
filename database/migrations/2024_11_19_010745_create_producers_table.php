@@ -10,10 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
 
-            //forgien key to album table. this line makes it so when a comment is deleted, all albums associated with that comment are deleted
+            //forgien key to album table. this line makes it so when a review is deleted, all albums associated with that review are deleted
             $table->foreignId('album_id')->constrained()->onDelete('cascade');
             $table->text('name');
             $table->text('genre');
@@ -27,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('reviews');
     }
 };

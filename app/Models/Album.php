@@ -18,9 +18,9 @@ class Album extends Model
     ];
 
     //this makes it a one to many relationship
-    public function Comment()
+    public function Review()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Review::class);
 
     }
 

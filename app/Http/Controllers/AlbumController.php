@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
-use App\Models\Comment;
+use App\Models\Review;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
@@ -98,7 +98,7 @@ class AlbumController extends Controller
 //################################################################################################################################################################################################################################
     public function show(Album $album)
     {
-        $album->load('comment.user');
+        $album->load('review.user');
         return view('Albums.show')->with('album', $album);
     }
 

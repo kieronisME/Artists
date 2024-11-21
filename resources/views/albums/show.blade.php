@@ -13,19 +13,19 @@
                     <x-album-Details :title="$album->title" :rating="$album->rating" :releaseYear="$album->releaseYear"
                         :image="$album->image" :embedLink="$album->embedLink" />
                     <h4 class="font-semibold text-md mt-8"> Comments</h4>
-                    @if($album->comment->isEmpty())
-                        <p class="test-gray-600"> No comments yet</p>
+                    @if($album->review->isEmpty())
+                        <p class="test-gray-600"> No Comments yet</p>
                     @else
                         <ul class="mt-4 space-y-4">
-                            @foreach ($album->comments as $comment)
+                            @foreach ($album->Comments as $Comment)
                                 <il class="bg-gray-100 p-4 rounded-lg">
                                     <p class="font font-semibold">
-                                        {{ $comment->user->name}}{{$comment->created_at->format('M d, Y')}}
+                                        {{ $Comment->user->name}}{{$Comment->created_at->format('M d, Y')}}
                                     </p>
-                                    <p>{Comment: {$review->comment}}</p>
+                                    <p>{Review: {$review->Comment}}</p>
                                     <p>{Rating: {$review->name}} /5</p>
 
-                                    @if ($)
+                                    
 
 
 
@@ -33,7 +33,7 @@
                             @endforeach
                         </ul>
                     @endif
-                    <h4 class="font-seemibold text-md mt-8">add a comment</h4>
+                    <h4 class="font-seemibold text-md mt-8">add a review</h4>
                     <form action="{{route('rating.store', $album)}}" method="POST" class="mt-4">
                         @csrf
                         <div class="mb-4">
@@ -48,9 +48,9 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="Comment" class="block font-medium text-sm text-gray-700">Comment</label>
-                            <textarea name="Comment" id="Comment" rows="3" class="mt-1 block w-full"
-                                placeholder="Write a Comment">
+                            <label for="Review" class="block font-medium text-sm text-gray-700">Comment</label>
+                            <textarea name="Review" id="Review" rows="3" class="mt-1 block w-full"
+                                placeholder="Write a Review">
                             </textarea>
 
                         </div>

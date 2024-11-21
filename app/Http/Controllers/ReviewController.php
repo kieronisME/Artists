@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
+use App\Models\Review;
 use App\Models\Album;
 use Illuminate\Http\Request;
 
@@ -34,20 +34,20 @@ class CommentController extends Controller
     {
 
         $request->validate([
-            'comment' => 'required|string|max:500',
+            'review' => 'required|string|max:500',
             'rating' => 'required|integer|max:5',
 
         ]);
 
-        $album->comment()->create([
+        $album->review()->create([
             'user_id' => auth()->id(),
-            'comment' => 'required|string|max:500',
+            'review' => 'required|string|max:500',
             'rating' => 'required|integer|max:5',
             'album_id' => $album->id
 
         ]);
 
-        return to_route('Albums.show', $album)->with('success', 'youjust added a comment');
+        return to_route('Albums.show', $album)->with('success', 'youjust added a review');
 
     }
 
@@ -56,7 +56,7 @@ class CommentController extends Controller
 //################################################################################################################################################################################################################################
 //                                                                                             Show
 //################################################################################################################################################################################################################################
-    public function show(Comment $comment)
+    public function show(Review $review)
     {
         //
     }
@@ -66,7 +66,7 @@ class CommentController extends Controller
 //################################################################################################################################################################################################################################
 //                                                                                             Edit
 //################################################################################################################################################################################################################################
-    public function edit(Comment $comment)
+    public function edit(Review $review)
     {
         //
     }
@@ -76,7 +76,7 @@ class CommentController extends Controller
 //################################################################################################################################################################################################################################
 //                                                                                             Update
 //################################################################################################################################################################################################################################
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Review $review)
     {
         //
     }
@@ -84,7 +84,7 @@ class CommentController extends Controller
 //################################################################################################################################################################################################################################
 //                                                                                             Delete
 //################################################################################################################################################################################################################################ 
-    public function destroy(Comment $comment)
+    public function destroy(Review $review)
     {
         //
     }
