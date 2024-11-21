@@ -13,29 +13,45 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
 
-Route::resource('comments', AlbumController::class);
-Route::get('/albums/{album}/comments', [AlbumController::class, 'store'])->name('Albums.store');
+
+//####################################################################################################//
+//                                               One to Many                                          //
+//####################################################################################################//
+Route::resource('rating', AlbumController::class);
+Route::get('/albums/{album}/rating', [AlbumController::class, 'store'])->name('Albums.store');
 
 
 
 
-    //extra
+//####################################################################################################//
+//                                                  Extra                                             //
+//####################################################################################################//
     Route::get('/albums/fiveStar', [AlbumController::class, 'fiveStaralbum'])->name('Albums.fiveStar');
     Route::get('/albums/year', [AlbumController::class, 'year'])->name('Albums.year');
    
     
-    //crud
+
+//####################################################################################################//
+//                                                  Crud                                              //
+//####################################################################################################//
     Route::put('/albums/{album}', [AlbumController::class, 'update'])->name('Albums.update');
     Route::get('/albums/{album}/edit', [AlbumController::class, 'edit'])->name('Albums.edit');
     Route::delete('/albums/{album}', [AlbumController::class, 'destroy'])->name('Albums.destroy');
     Route::get('/albums/create', [AlbumController::class, 'create'])->name('Albums.create');
 
-    //others 
+
+//####################################################################################################//
+//                                           Normal functionality                                     //
+//####################################################################################################//
     Route::post('/albums', [AlbumController::class, 'store'])->name('Albums.store');
     Route::get('/albums', [AlbumController::class, 'index'])->name('Albums.index');
     Route::get('/albums/{album}', [AlbumController::class, 'show'])->name('Albums.show');
 
-    //dont touch this yet
+
+
+//####################################################################################################//
+//                                                  Profile                                           //
+//####################################################################################################//
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

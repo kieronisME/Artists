@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,11 +13,9 @@ class Comment extends Model
     use HasFactory;
   
     protected $fillable = [
-        'name',
-        'genre',
-        'studio',
-        'label',
-        'album_id',
+        'comment',
+        'rating' ,
+      
     ];
    
     public function Albums()

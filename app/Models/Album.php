@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,7 +18,7 @@ class Album extends Model
     ];
 
     //this makes it a one to many relationship
-    public function Producers()
+    public function Comment()
     {
         return $this->hasMany(Comment::class);
 
