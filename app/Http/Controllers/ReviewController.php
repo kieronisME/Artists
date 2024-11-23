@@ -30,26 +30,24 @@ class ReviewController extends Controller
 //                                                                                                Store
 //################################################################################################################################################################################################################################
     
-    public function store(Request $request, Album $album)
-    {
+public function store(Request $request, Album $album)
+{
+  
+    $request->validate([
+        'rating' => 'required|integer|min:1|max:5', 
+        'comment' => 'nullable|string|max:1000',    
+    ]);
 
-        $request->validate([
-            'review' => 'required|string|max:500',
-            'rating' => 'required|integer|max:5',
+    $album->reviews()->create([
+        'user_id' => auth()->id(), 
+        'rating' => $request->input('rating'),
+        'comment' => $request->input('comment'),
+        'album_id' =>$album->id
+    ]);
 
-        ]);
+    return redirect()->route('Albums.show', $album)->with('success', 'You just added a review!');
+}
 
-        $album->review()->create([
-            'user_id' => auth()->id(),
-            'review' => 'required|string|max:500',
-            'rating' => 'required|integer|max:5',
-            'album_id' => $album->id
-
-        ]);
-
-        return to_route('Albums.show', $album)->with('success', 'youjust added a review');
-
-    }
 
 
 
@@ -83,7 +81,7 @@ class ReviewController extends Controller
     public function update(Request $request, Review $review)
     {
         $review->update($request ->only(['rating','comment']));
-        return redirect()->route('albums.show', $review->book_id)
+        return redirect()->route('Albums.show', $review->album_id)
                          ->with('YOU DID IT!','Review updated SUCCESSFULLY!!!!');
         
     }

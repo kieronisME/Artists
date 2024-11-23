@@ -18,7 +18,8 @@ class Album extends Model
     ];
 
     //this makes it a one to many relationship
-    public function Review()
+//this was a capital Review
+    public function reviews()
     {
         return $this->hasMany(Review::class);
 

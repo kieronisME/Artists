@@ -12,12 +12,11 @@ return new class extends Migration {
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-
-            //forgien key to album table. this line makes it so when a review is deleted, all albums associated with that review are deleted
             $table->foreignId('album_id')->constrained()->onDelete('cascade');
-            $table->text('name');
-            $table->text('genre');
-            $table->text('label');
+            //forgien key to album table. this line makes it so when a review is deleted, all albums associated with that review are deleted
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->integer('rating')->unsigned()->default(1);
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }

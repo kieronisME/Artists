@@ -98,7 +98,7 @@ class AlbumController extends Controller
 //################################################################################################################################################################################################################################
     public function show(Album $album)
     {
-        $album->load('review.user');
+        $album->load('reviews.user');
         return view('Albums.show')->with('album', $album);
     }
 

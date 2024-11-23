@@ -18,15 +18,17 @@ Route::middleware('auth')->group(function () {
 //####################################################################################################//
 //                                               One to Many                                          //
 //####################################################################################################//
-Route::resource('rating', AlbumController::class);
-Route::get('/albums/{album}/rating', [AlbumController::class, 'store'])->name('Albums.store');
+//misfortune misfortune misfortune misfortune misfortune misfortune misfortune misfortune misfortune misfortune misfortune misfortune misfortune
+Route::resource('reviews',ReviewController::class);
+Route::post('albums/{album}/reviews',[ReviewController::class,'store'])->name('reviews.store');
+//if some side shit h apps remove the s from album and review
 
-Route::resource('reviews', ReviewController::class);
-Route::post('/albums/{album}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
+
 
 
 //####################################################################################################//
-//                                                  Extra                                             //
+//                                                 Extra                                             //
 //####################################################################################################//
     Route::get('/albums/fiveStar', [AlbumController::class, 'fiveStaralbum'])->name('Albums.fiveStar');
     Route::get('/albums/year', [AlbumController::class, 'year'])->name('Albums.year');
