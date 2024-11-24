@@ -34,6 +34,7 @@
                         {{ __('albums made in the 21st century') }}
                     </x-nav-link>
 
+
                  
 
                 

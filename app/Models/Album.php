@@ -18,13 +18,22 @@ class Album extends Model
     ];
 
     //this makes it a one to many relationship
-//this was a capital Review
+    //this was a capital Review
     public function reviews()
     {
         return $this->hasMany(Review::class);
 
     }
+    public function bigawards()
+    {
+        return $this->belongsToMany(Bigaward::class);
 
+    }
 }
+
+
+
+
+
 
 

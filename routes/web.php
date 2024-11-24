@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\BigawardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+//####################################################################################################//
+//                                               Many to Many                                         //
+//####################################################################################################//
+Route::resource('Bigawards', BigawardController::class,)->middleware('auth');
+
+
 
 
 //####################################################################################################//
