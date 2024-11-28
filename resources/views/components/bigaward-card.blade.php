@@ -18,4 +18,15 @@
         View
     </a>
 
+    @if(auth()->user()->role === 'admin')
+    <form action="{{ route('Bigawards.destroy', $bigaward) }}" method="POST"
+        onsubmit="return confirm('This action is permanent!');">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="bg-red-800 rounded-lg mr-4 my-3 text-black py-1 px-1 hover:bg-red-300">
+            Delete
+        </button>
+    </form>
+    @endif
+
 </div>

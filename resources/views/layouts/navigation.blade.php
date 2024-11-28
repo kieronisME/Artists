@@ -38,16 +38,11 @@
                         {{ __('Awards') }}
                     </x-nav-link>
 
-                  
-                    <x-nav-link :href="route('Bigawards.create')" :active="request()->routeIs('Bigawards.create')">
-                        {{ __('create an Award') }}
-                    </x-nav-link>
-
-                 
-
-                
-                
-
+                    @if(auth()->user()->role === 'admin')
+                        <x-nav-link :href="route('Bigawards.create')" :active="request()->routeIs('Bigawards.create')">
+                            {{ __('create an Award') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 

@@ -11,10 +11,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h3 class="font-semibold text-lg mb-4">Add a New Award</h3>
-                    <x-bigaward-form  
-                    :action="route('Bigawards.store')" 
-                    method="POST" 
-                    />
+                    <x-bigaward-form :action="route('Bigawards.store')" method="POST" />
                 </div>
             </div>
         </div>

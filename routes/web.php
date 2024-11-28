@@ -21,19 +21,16 @@ Route::resource('Bigawards', BigawardController::class,)->middleware('auth');
 Route::get('/bigawards', [BigawardController::class, 'index'])->name('Bigawards.index');
 Route::put('/bigawards/{bigaward}', [BigawardController::class, 'update'])->name('Bigawards.update');
 Route::get('/bigawards/{bigaward}/edit', [BigawardController::class, 'edit'])->name('Bigawards.edit');
-Route::get('/bigawards/{bigaward}', [BigawardController::class, 'show'])->name('Bigawards.show');
 
-Route::get('/bigawards/create', [BigawardController::class, 'create'])->name('Bigawards.create');
+Route::get('/bigawards/{bigaward}', [BigawardController::class, 'show'])->name('Bigawards.show');
+Route::delete('/bigawards/{bigaward}', [BigawardController::class, 'destroy'])->name('Bigawards.destroy');
+Route::get('/bigawards/create', [BigawardController::class, 'create'])->name('bigawards.create');
 Route::post('/bigawards', [BigawardController::class, 'store'])->name('Bigawards.store');
 //####################################################################################################//
 //                                               One to Many                                          //
 //####################################################################################################//
 Route::resource('reviews',ReviewController::class);
 Route::post('albums/{album}/reviews',[ReviewController::class,'store'])->name('reviews.store');
-
-
-
-
 
 
 //####################################################################################################//

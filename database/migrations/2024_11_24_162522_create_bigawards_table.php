@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('bigawards', function (Blueprint $table) {
             $table->id();
-            $table->string('album');
+            $table->string('album')->default('Unknown Album');;
             $table->string('name');
             $table->integer('year');
             $table->string('image')->nullable();

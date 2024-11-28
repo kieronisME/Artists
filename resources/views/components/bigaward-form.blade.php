@@ -5,12 +5,23 @@
     @if($method === 'PUT' || $method === 'PATCH')
         @method($method)
     @endif
+
     <div class="mb-4">
-        <label for="title" class="block text-sm text-gray-700">name</label>
+        <label for="album" class="block text-sm text-gray-700">Album</label>
+        <input type="text" name="album" id="album" value="{{ old('album', $bigaward->album ?? '') }}" required
+            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+        @error('album')
+            <p class="text-sm text-red-600">{{ $message }}</p>
+        @enderror
+    </div>
+
+
+    <div class="mb-4">
+        <label for="name" class="block text-sm text-gray-700">name</label>
         <!-- dispalys old data -->
         <input type="text" name="name" id="name" value="{{ old('name', $bigaward->name ?? '') }}" required
             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
-        @error('title')
+        @error('name')
             <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
     </div>
@@ -26,14 +37,7 @@
         @enderror
     </div>
 
-    <div class="mb-4">
-        <label for="rating" class="block text-sm text-gray-700">rating</label>
-        <input type="text" name="rating" id="rating" value="{{ old('rating', $bigaward->rating ?? '') }}" required
-            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
-        @error('rating')
-            <p class="text-sm text-red-600">{{ $message }}</p>
-        @enderror
-    </div>
+ 
      
 
     <div class="mb-4">

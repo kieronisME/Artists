@@ -88,7 +88,7 @@ class AlbumController extends Controller
             'image' => $imageName,
         ]);
 
-        
+        return redirect()->route('Albums.index')->with('success', 'Album updated successfully!');
     }
 
 

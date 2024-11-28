@@ -18,9 +18,7 @@ class BigawardController extends Controller
 
     public function create()
     {
-
-        return view('Bigawards.create');
-
+        return view('bigawards.create');
     }
 
     public function store(Request $request)
@@ -29,7 +27,7 @@ class BigawardController extends Controller
         $request->validate([
             'album' => 'required|string|max:255',
             'name' => 'required|string|max:255',
-            'year' => 'required|integer|max:5',
+            'year' => 'required|integer|max:8000',
             'image' => 'nullable|image|mimes:jpeg,png,gif|max:2048',
         ]);
 
@@ -42,11 +40,11 @@ class BigawardController extends Controller
         //creating new album in DB
         Bigaward::create([
             'album' => $request->album,
-            'name' => $request->rating,
-            'year' => $request->releaseYear,
-            'image' => $imagework,
+            'name' => $request->name,  
+            'year' => $request->year,   
+            'image' => isset($imagework) ? $imagework : null,  
         ]);
-
+        return redirect()->route('Bigawards.index')->with('success', 'Award updated successfully!');
     }
 
 
@@ -76,39 +74,43 @@ class BigawardController extends Controller
 
     public function update(Request $request, Bigaward $bigaward)
     {
-
         // Validations
         $request->validate([
             'album' => 'required|string|max:255',
             'name' => 'required|string|max:255',
-            'year' => 'required|integer|max:5',
+            'year' => 'required|integer|max:8000',
+            'rating' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,gif|max:2048',
         ]);
-
-        // checks if image uplaoded
+    
+        // Handle image upload if a new one is provided
         if ($request->hasFile('image')) {
             if ($bigaward->image) {
                 Storage::delete('ArtistImg/images/' . $bigaward->image);
             }
-
+    
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('ArtistImg/images'), $imageName);
             $bigaward->image = $imageName;
         }
-        // assighnes new meaning to each 
+    
+
         $bigaward->album = $request->album;
         $bigaward->name = $request->name;
         $bigaward->year = $request->year;
         $bigaward->save();
-
+    
         return redirect()->route('Bigawards.index')->with('success', 'Award updated successfully!');
-
-
     }
 
 
     public function destroy(Bigaward $bigaward)
     {
-        //
+        if ($bigaward->image) {
+            Storage::delete('ArtistImg/images/' . $bigaward->image);
+        }
+
+        $bigaward->delete();
+        return redirect()->route('Bigawards.index')->with('success', 'AWARD deleted successfully!');
     }
 }
