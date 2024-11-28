@@ -1,63 +1,112 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\Bigaward;
 use Illuminate\Http\Request;
 
 class BigawardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-     public function index()
+
+    public function index()
     {
+        $Bigaward = Bigaward::all();
+        return view('Bigawards.index', compact('Bigaward'));
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+
+        return view('Bigawards.create');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        //validations 
+        $request->validate([
+            'album' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'year' => 'required|integer|max:5',
+            'image' => 'nullable|image|mimes:jpeg,png,gif|max:2048',
+        ]);
+
+        //saves image with timestamp
+        if ($request->hasFile('image')) {
+            $imagework = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('ArtistImg/images'), $imagework);
+        }
+
+        //creating new album in DB
+        Bigaward::create([
+            'album' => $request->album,
+            'name' => $request->rating,
+            'year' => $request->releaseYear,
+            'image' => $imagework,
+        ]);
+
     }
 
-    /**
-     * Display the specified resource.
-     */
+
+
+
+
     public function show(Bigaward $bigaward)
     {
-        //
+        return view('Bigawards.show')->with('bigaward', $bigaward);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
+
+
+
+
+
+
+
+
     public function edit(Bigaward $bigaward)
     {
-        //
+        return view('Bigawards.edit', compact('bigaward'));
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, Bigaward $bigaward)
     {
-        //
+
+        // Validations
+        $request->validate([
+            'album' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'year' => 'required|integer|max:5',
+            'image' => 'nullable|image|mimes:jpeg,png,gif|max:2048',
+        ]);
+
+        // checks if image uplaoded
+        if ($request->hasFile('image')) {
+            if ($bigaward->image) {
+                Storage::delete('ArtistImg/images/' . $bigaward->image);
+            }
+
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('ArtistImg/images'), $imageName);
+            $bigaward->image = $imageName;
+        }
+        // assighnes new meaning to each 
+        $bigaward->album = $request->album;
+        $bigaward->name = $request->name;
+        $bigaward->year = $request->year;
+        $bigaward->save();
+
+        return redirect()->route('Bigawards.index')->with('success', 'Award updated successfully!');
+
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Bigaward $bigaward)
     {
         //

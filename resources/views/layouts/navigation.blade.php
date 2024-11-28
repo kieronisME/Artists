@@ -34,6 +34,14 @@
                         {{ __('albums made in the 21st century') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('Bigawards.index')" :active="request()->routeIs('Bigawards.index')">
+                        {{ __('Awards') }}
+                    </x-nav-link>
+
+                  
+                    <x-nav-link :href="route('Bigawards.create')" :active="request()->routeIs('Bigawards.create')">
+                        {{ __('create an Award') }}
+                    </x-nav-link>
 
                  
 

@@ -18,17 +18,19 @@ Route::middleware('auth')->group(function () {
 //                                               Many to Many                                         //
 //####################################################################################################//
 Route::resource('Bigawards', BigawardController::class,)->middleware('auth');
+Route::get('/bigawards', [BigawardController::class, 'index'])->name('Bigawards.index');
+Route::put('/bigawards/{bigaward}', [BigawardController::class, 'update'])->name('Bigawards.update');
+Route::get('/bigawards/{bigaward}/edit', [BigawardController::class, 'edit'])->name('Bigawards.edit');
+Route::get('/bigawards/{bigaward}', [BigawardController::class, 'show'])->name('Bigawards.show');
 
-
-
-
+Route::get('/bigawards/create', [BigawardController::class, 'create'])->name('Bigawards.create');
+Route::post('/bigawards', [BigawardController::class, 'store'])->name('Bigawards.store');
 //####################################################################################################//
 //                                               One to Many                                          //
 //####################################################################################################//
-//misfortune misfortune misfortune misfortune misfortune misfortune misfortune misfortune misfortune misfortune misfortune misfortune misfortune
 Route::resource('reviews',ReviewController::class);
 Route::post('albums/{album}/reviews',[ReviewController::class,'store'])->name('reviews.store');
-//if some side shit h apps remove the s from album and review
+
 
 
 
@@ -67,6 +69,11 @@ Route::post('albums/{album}/reviews',[ReviewController::class,'store'])->name('r
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+//add insert route fail route 
+
 
 require __DIR__.'/auth.php';
    
