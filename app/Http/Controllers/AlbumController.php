@@ -53,7 +53,7 @@ class AlbumController extends Controller
     public function create()
     {
         if (auth()->user()->role !== 'admin') {
-            return redirect()->route('Album.index')->with('error', '');
+            return redirect()->route('Albums.index')->with('error', '');
         }
         return view('Albums.create');
 

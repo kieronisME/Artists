@@ -3,8 +3,8 @@
 <div class="border rounded-lg shadow-md p-6 bg-black hover:shadow-lg transition duration-300">
     <h4 class="font-bold text-lg">{{ $album }}</h4>
     <img src="{{ asset('ArtistImg/images/' . $image) }}" alt="{{ $album }}">
-    <p class="text-gray-600">year {{ $year }} </p>
-    <p class="text-gray-800 mb-3">{{ $name }} name </p>
+    <p class="text-white">year {{ $year }} </p>
+    <p class="text-white mb-3">{{ $name }} name </p>
 
     @if(auth()->user()->role === 'admin')
         <a href="{{ route('Bigawards.edit', $bigaward) }}"

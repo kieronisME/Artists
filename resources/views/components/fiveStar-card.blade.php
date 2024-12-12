@@ -3,8 +3,8 @@
 <div class="border rounded-lg shadow-md p-6 bg-black hover:shadow-lg transition duration-300">
     <h4 class="font-bold text-lg">{{ $title }}</h4>
     <img src="{{ asset('ArtistImg/images/' . $image) }}" alt="{{ $title }}">
-    <p class="text-gray-600">Release Year {{ $releaseYear }} </p>
-    <p class="text-gray-800 mb-3">{{ $rating }} star Rating </p>
+    <p class="text-white">Release Year {{ $releaseYear }} </p>
+    <p class="text-white mb-3">{{ $rating }} star Rating </p>
 
 
 
